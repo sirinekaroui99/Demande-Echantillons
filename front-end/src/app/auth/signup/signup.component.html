@@ -1,0 +1,136 @@
+
+<div class="container" style="background-color: aliceblue; margin-right: 3%;"  >
+    <div class="row justify-content-center">
+        <div class="col-md-6" style="margin-top: 8%;">
+            <h1 style="color: limegreen " >  <strong> {{title}}</strong></h1>
+            <hr />
+            <div class="signup-form" style="margin-top: 7%;">
+                <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col-md-3">
+                                <label><strong>Username</strong>  <span class="error">*</span></label>
+                            </div>
+                            <div class="col-md-9">
+                                <input formControlName="username" class="form-control" placeholder="Nom d'utilisateur" />
+                                <small class="error" *ngIf="f.username.invalid && (f.username.dirty || f.username.touched)">
+                                    <div *ngIf="f.username.hasError('required')">This field is required.</div>
+                                    <div *ngIf="f.username.hasError('pattern')">Only alphanumeric is allowed.</div>
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col-md-3">
+                                <label><strong>Matricule</strong>  <span class="error">*</span></label>
+                            </div>
+                            <div class="col-md-9">
+                                <input formControlName="Matricule" class="form-control" placeholder="Matricule" type=number />
+                                <small class="error" *ngIf="f.Matricule.invalid && (f.Matricule.dirty || f.Matricule.touched)">
+                                    <div *ngIf="f.Matricule.hasError('required')">This field is required.</div>
+                                    <div *ngIf="f.Matricule.hasError('pattern')">Only alphanumeric is allowed.</div>
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col-md-3">
+                                <label><strong>Password</strong>  <span class="error">*</span></label>
+                            </div>
+                            <div class="col-md-9">
+                                <input formControlName="password" type="password" class="form-control" placeholder="Mot de passe" />
+                                <small class="error" *ngIf="f.password.invalid && (f.password.dirty || f.password.touched)">
+                                    <div *ngIf="f.password.hasError('required')">This field is required.</div>
+                                    <div *ngIf="f.password.hasError('minlength')">Password must be at least 6 characters.</div>
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col-md-3">
+                                <label><strong>Confirm Password</strong>  <span class="error">*</span></label>
+                            </div>
+                            <div class="col-md-9">
+                                <input formControlName="passconf" type="password" class="form-control" placeholder="Confirmer le mot de passe" />
+                                <small class="error" *ngIf="f.passconf.invalid && (f.passconf.dirty || f.passconf.touched)">
+                                    <div *ngIf="f.passconf.hasError('required')">This field is required.</div>
+                                </small>
+                                <small class="error" *ngIf="signupForm.errors?.passwordmatch && (signupForm.dirty || signupForm.touched)">
+                                    Password and confirm password must be match.
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col-md-3">
+                                <label><strong>E-Mail</strong>  <span class="error">*</span></label>
+                            </div>
+                            <div class="col-md-9">
+                                <input formControlName="Email" class="form-control" placeholder="Email@gmail.com" />
+                                <small class="error" *ngIf="f.Email.invalid && (f.Email.dirty || f.Email.touched)">
+                                    <div *ngIf="f.Email.hasError('required')">This field is required.</div>
+                                    <div *ngIf="f.Email.hasError('Email')">Enter valid email address.</div>
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col-md-3">
+                                <label><strong>Nom</strong>  <span class="error">*</span></label>
+                            </div>
+                            <div class="col-md-9">
+                                <input formControlName="Nom" class="form-control" placeholder="Nom"/>
+                                <small class="error" *ngIf="f.Nom.invalid && (f.Nom.dirty || f.Nom.touched)">
+                                    <div *ngIf="f.Nom.hasError('required')">This field is required.</div>
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col-md-3">
+                                <label><strong>Prenom</strong> </label>
+                            </div>
+                            <div class="col-md-9">
+                                <input formControlName="Prenom" class="form-control" placeholder="Prenom"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col-md-3">
+                                <label><strong>Section</strong>  <span class="error">*</span></label>
+                            </div>
+                            <div class="col-md-9">
+                                <mat-select formControlName="Section" class="form-control">
+                                    <mat-option  *ngFor="let section of sections" [value]="section.Intitule"  >
+                                      {{section.Intitule }}
+                                    </mat-option>
+                                  </mat-select>
+                                <small class="error" *ngIf="f.Section.invalid && (f.Section.dirty || f.Section.touched)">
+                                    <div *ngIf="f.Section.hasError('required')">This field is required.</div>
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col-md-3">
+                            </div>
+                            <div class="col-md-9">
+                                <button type="submit" [disabled]="signupForm.invalid" class="btn btn-primary">Créer</button>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <button class="btn btn-danger" style="margin-left: 39%; position: absolute; margin-top: -10%;" routerLink="/backend/dashboard/listeUtilisateur"  >Annuler</button>
+            </div>
+        </div>
+    </div>
+</div>

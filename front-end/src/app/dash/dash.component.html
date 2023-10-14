@@ -1,0 +1,42 @@
+<div class="grid-container" style="margin-top: 8%; margin-left: 5%;">
+ <!-- <h1 class="mat-h1">Tableau de bord</h1>-->
+  <mat-grid-list cols="4" rowHeight="200px">
+    <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
+      <mat-card class="dashboard-card" style="background-color: rgb(243, 255, 241);">
+        <mat-card-header>
+          <mat-card-title>
+          <strong>{{card.title}}</strong>  
+            
+            <mat-menu #menu="matMenu" xPosition="before">
+         <!--   <button mat-menu-item>Expand</button>
+              <button mat-menu-item>Remove</button>-->   
+            </mat-menu>
+         </mat-card-title>
+        </mat-card-header>
+        
+        <mat-card-content class="dashboard-card-content" *ngIf="card.title == 'Demandes' " ><br>
+          <div style="font-size: 30px;"><i class="fa fa-bar-chart" style="font-size:60px;color:lightblue;text-shadow:2px 2px 4px #000000; margin-left: -15%;"></i>&nbsp;&nbsp;&nbsp;<strong>{{totalCmd}}</strong> </div>
+        </mat-card-content>
+        <mat-card-content class="dashboard-card-content" *ngIf="card.title == 'Demandes En cours' " ><br>
+          <div style="font-size: 30px;"><i class="fa fa-spinner" style="font-size:60px;color:rgb(247, 184, 48);text-shadow:2px 2px 4px #000000; margin-left: -15%;"></i>&nbsp;&nbsp;&nbsp;<strong>{{CmdEnCours}}</strong> </div>
+        </mat-card-content>
+        
+        <mat-card-content class="dashboard-card-content" *ngIf="card.title == 'Demandes Validées' " ><br>
+          <div style="font-size: 30px;"><i class="fa fa-check-circle" style="font-size:60px;color:rgb(76, 226, 101);text-shadow:2px 2px 4px #000000; margin-left: -15%;"></i>&nbsp;&nbsp;&nbsp;<strong>{{ValidCmd}}</strong> </div>
+        </mat-card-content>
+        <mat-card-content class="dashboard-card-content" *ngIf="card.title == 'Demandes Refusées' " ><br>
+          <div style="font-size: 30px;"><i class="fa fa-window-close" style="font-size:60px;color:rgb(214, 11, 11);text-shadow:2px 2px 4px #000000; margin-left: -15%;"></i>&nbsp;&nbsp;&nbsp;<strong>{{RefusCmd}}</strong></div>
+          
+        </mat-card-content>
+        <mat-card-content class="dashboard-card-content" *ngIf="card.title == 'Nombre des demandes par section' " >
+          <div><div style="width: 90%; margin-left: 2%; margin-top: 0%;">
+            <canvas id="doughnut"></canvas>
+          </div></div>
+        </mat-card-content>
+       
+      </mat-card>
+      
+    </mat-grid-tile>
+  </mat-grid-list>
+  
+</div>

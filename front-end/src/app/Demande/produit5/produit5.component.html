@@ -1,0 +1,42 @@
+<style>
+    .box1{
+     position: relative;
+     margin-top: 0%;
+     left: 20px;
+     
+   }
+   .box3{
+     position:absolute;
+     top: 0px;
+     left: 30%;
+   }
+   .box4{
+     position:absolute;
+     top: 140px;
+     left: 55%;
+   }
+   .box5{
+     position:absolute;
+     top: 10%;
+     left: 140%;
+   }
+</style>
+
+<span>
+  <form  class="box1"> 
+    <mat-form-field style="width: 25%">
+     
+      <input type="text" matInput [formControl]="myControl"  [matAutocomplete]="auto"  style="background-color: aliceblue;" [(ngModel)]="commande5.Produit"  >
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" >
+        <mat-option *ngFor="let option of filteredOptions | async"  [value]="option"   >
+          {{option.Designation}}
+        </mat-option>
+      </mat-autocomplete>
+    
+   
+      <div class="box5">
+        <input style="margin-right: 10%; " type="number" min="1" max="2" name="nbr_pdt" value="0" required="required" [(ngModel)]="commande5.Quantite" ><br><br>
+       
+      </div></mat-form-field>
+  </form>
+</span>

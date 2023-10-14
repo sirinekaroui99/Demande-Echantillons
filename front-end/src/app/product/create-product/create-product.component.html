@@ -1,0 +1,57 @@
+
+<div  style="margin-top:  10%;   background-color: yellowgreen; margin-left: 20%; margin-right: 20%; padding-left: 5%; padding-top: 2%;" >
+    <h1  *ngIf="!update" >Ajout Produit</h1>
+    <h1  *ngIf="update" >Mise à jour du produit</h1>
+    <hr />
+    <div class="row">
+        <div class="col-md-8">
+            <form [formGroup]="productForm" (ngSubmit)="verifProduit();onSubmit()">
+                <div class="form-group">
+                    <div class="form-row">
+                        <label class="col-md-3"><strong>Code</strong>  <span class="error">*</span></label>
+                        <div class="col-md-9">
+                            <input formControlName="Code" class="form-control" />
+                            <small class="error" *ngIf="f.Code.invalid && (f.Code.dirty || f.Code.touched)">
+                                <div *ngIf="f.Code.hasError('required')">This field is required.</div>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <label class="col-md-3"> <strong>Designation</strong>  <span class="error">*</span></label>
+                        <div class="col-md-9">
+                            <input formControlName="Designation" class="form-control" />
+                            <small class="error" *ngIf="f.Designation.invalid && (f.Designation.dirty || f.Designation.touched)">
+                                <div *ngIf="f.Designation.hasError('required')">This field is required.</div>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <label class="col-md-3"> <strong>Forme</strong> </label>
+                        <div class="col-md-9">
+                            <input formControlName="Forme" class="form-control" />
+                            <small class="error" *ngIf="f.Forme.invalid && (f.Forme.dirty || f.Forme.touched)">
+                                <div *ngIf="f.Forme.hasError('required')">This field is required.</div>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                <div class="form-group">
+                    <div class="form-row">
+                        <label class="col-md-3"></label>
+                        <div class="col-md-9">
+                            <button class="btn btn-success mr-2" [disabled]="!productForm.valid"  *ngIf="!update" (click) ="verifProduit()">Ajouter</button>
+                            <button  class="btn btn-success mr-2" *ngIf="update" (click) ="verifProduit()">Modifier</button>
+                            <button class="btn btn-danger" (click)="goBack()">Annuler</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

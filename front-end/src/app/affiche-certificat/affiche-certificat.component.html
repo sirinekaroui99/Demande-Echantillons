@@ -1,0 +1,17 @@
+
+<p  *ngIf="Notcert" class="alert alert-warning" style="margin-left: 20%; margin-right: 20%; margin-top: 8%;">
+    <strong>! ! ! </strong>  Aucun image existe!
+  
+  </p> 
+<div *ngIf="!image"> 
+
+<img src="http://localhost:3000/images/{{certificat}}" *ngIf="!Notcert"  >
+</div>
+
+
+<div id="print-certificat"  *ngIf="image" style="margin-left: -25%;">
+
+  <img src="http://localhost:3000/images/{{imprim}}" style="width:80%; height: 100%;" >
+  
+</div>
+<button (click)="print()" style="margin-left: 20%; margin-top: 5%; margin-bottom: 2%; " class="btn btn-save btn-primary" *ngIf="image" >Imprimer</button>

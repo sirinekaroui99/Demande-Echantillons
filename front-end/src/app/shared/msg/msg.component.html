@@ -1,0 +1,11 @@
+
+<div *ngIf="messageService.messages.length">
+    <div class="alert alert-danger alert-dismissible mb-2" role="alert">
+      <button type="button" class="close" (click)="messageService.clear()">
+          <span aria-hidden="true">×</span>
+      </button>
+      <ol class="error-messages">
+          <div>Erreur : Vérifier les données saisies</div>
+      </ol>
+  </div>
+</div>

@@ -1,0 +1,132 @@
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<nav class="navbar navbar-expand-md navbar-light  "  style="width: 100%; height: 10%;  position: fixed; background-color:  rgb(209, 209, 209); "  ><img [attr.src]="'assets/images/opaliagroupe.jpg'" alt="logo"  height="60" width="10%" style="margin-top: 3%;margin-bottom: 1.8%; margin-left: 3%;">
+  <a class="navbar-brand" href="auth/login"   style="margin-left: 5%; color: black; font-size: large; font-weight: bold;" >OPALIA PHARMA</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="navbar-nav mr-auto">
+      
+     
+    </ul>
+    
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="javaScript:void(0)" (click)="logout()" ><i class="fa fa-sign-out" ></i>&nbsp;Logout</a>
+      </li>
+    </ul>
+    
+  </div>
+  
+</nav>
+
+<mat-sidenav-container class="sidenav-container" *ngIf="UserOpalia"  >
+  <mat-sidenav style="background-color:  rgb(209, 209, 209); margin-top: 4.4%;"
+    #drawer
+    class="sidenav"
+    fixedInViewport="true"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="!(isHandset$ | async)">
+   <br>
+  <br><br><br>
+  <p style="margin-top: 0%;">
+  <a mat-list-item routerLink="/backend/dashboard"  style="color: black; font-size: large; " > <i class="fa fa-home"></i> &nbsp;&nbsp;Acceuil </a>
+  <br><br>
+      <a mat-list-item routerLink="dashboard/createDemande"  style="color: black; font-size: large; "><i class="fa fa-edit"></i> &nbsp;Passer une Demande</a>
+   
+      <br><br>
+      <a mat-list-item routerLink="dashboard/SuiviDemande" style="color: black; font-size: large; "><i class="fa fa-spinner"></i> &nbsp;Suivi des demandes</a>
+    
+      <br><br>
+      <a mat-list-item routerLink="dashboard/gererUtilisateur"style="color: black;font-size: large;  "> <i class="fa fa-edit"></i>  &nbsp;Modifier le compte</a>
+    
+
+      </p>
+      <br><br>
+    <!--  <a mat-list-item routerLink="dashboard/DemandeValidé" style="color: white;  "><i class="fa fa-bars"></i>&nbsp;Liste demandes validée</a> -->
+      
+      
+      
+      <!--<a mat-list-item href="/second-page">Link 2</a>
+      <a mat-list-item href="#">Link 3</a>-->
+  
+  </mat-sidenav>
+  
+</mat-sidenav-container>
+
+
+<mat-sidenav-container class="sidenav-container" *ngIf="Admin"  >
+  <mat-sidenav style="background-color:  rgb(209, 209, 209); margin-top: 4.8%;"
+    #drawer
+    class="sidenav"
+    fixedInViewport="true"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="!(isHandset$ | async)">
+    <mat-toolbar style="background-color:  rgb(209, 209, 209); margin-top: 10%;">       </mat-toolbar><br>
+  <br><br><br>
+  <p style="margin-top: -50%;">
+  <a mat-list-item routerLink="/backend/dashboard"  style="color: black; font-size: large; " > <i class="fa fa-home"></i> &nbsp;&nbsp;Acceuil </a>
+  
+    
+      <br><br>
+      <a mat-list-item routerLink="dashboard/produit" style="color: black;font-size: large;  "><i class="fa fa-tasks"></i> &nbsp;Gérer Produit</a>
+     <br><br>
+      <a mat-list-item routerLink="dashboard/listeUtilisateur" style="color: black; font-size: large; " > <i class="fa fa-tasks"></i> &nbsp;Liste des utilisateurs</a>
+      <br><br>
+      <a mat-list-item routerLink="dashboard/gererUtilisateur" style="color: black; font-size: large; "> <i class="fa fa-edit"></i>  &nbsp;Modifier le compte</a>
+     
+      </p>
+      <br><br>
+    <!--  <a mat-list-item routerLink="dashboard/DemandeValidé" style="color: white;  "><i class="fa fa-bars"></i>&nbsp;Liste demandes validée</a> -->
+      
+      
+      
+      <!--<a mat-list-item href="/second-page">Link 2</a>
+      <a mat-list-item href="#">Link 3</a>-->
+  
+  </mat-sidenav>
+  
+</mat-sidenav-container>
+
+
+
+<mat-sidenav-container class="sidenav-container" *ngIf="Responsable"  >
+  <mat-sidenav style="background-color:  rgb(209, 209, 209); margin-top: 4.8%;"
+    #drawer
+    class="sidenav"
+    fixedInViewport="true"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="!(isHandset$ | async)">
+    <mat-toolbar style="background-color:  rgb(209, 209, 209); margin-top: 4.4%;">     </mat-toolbar><br>
+  <br><br><br>
+  <p style="margin-top: -50%;">
+  <a mat-list-item routerLink="/backend/dashboard"  style="color: black; font-size: large;" > <i class="fa fa-home"></i> &nbsp;&nbsp;Acceuil </a>
+  
+      <br><br>
+      <a mat-list-item routerLink="dashboard/listeDemandes" style="color: black; font-size: large; "> <i class="fa fa-list"></i> &nbsp;Liste des demandes </a>      
+      
+      <br><br>
+      <a mat-list-item routerLink="dashboard/gererUtilisateur"style="color: black; font-size: large; "> <i class="fa fa-edit"></i>  &nbsp;Modifier le compte</a>
+      
+      </p>
+      <br><br>
+    <!--  <a mat-list-item routerLink="dashboard/DemandeValidé" style="color: white;  "><i class="fa fa-bars"></i>&nbsp;Liste demandes validée</a> -->
+      
+      
+      
+      <!--<a mat-list-item href="/second-page">Link 2</a>
+      <a mat-list-item href="#">Link 3</a>-->
+  
+  </mat-sidenav>
+  
+</mat-sidenav-container>
+
+
+
+<app-message></app-message>

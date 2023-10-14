@@ -1,0 +1,78 @@
+<div style="margin-top: 7%; margin-left: 10%; margin-right: 10%;" *ngIf="success">
+  <div class="alert alert-success alert-dismissible mb-2" role="alert">
+    <button type="button" class="close" (click)="clear()">
+        <span aria-hidden="true">×</span>
+    </button>
+    <ol >
+        <div>Success : Utilisateur modifié</div>
+    </ol>
+</div>
+</div>
+
+<div style="margin-top: 5%; margin-left: 10%; margin-right: 10%;" *ngIf="Msg">
+  <div class="alert alert-success alert-dismissible mb-2" role="alert">
+    <button type="button" class="close" (click)="clearUser()">
+        <span aria-hidden="true">×</span>
+    </button>
+    <ol >
+        <div>Success : Le compte utilisateur créé avec succès</div>
+    </ol>
+</div>
+</div>
+
+
+<div class="row" >
+    
+</div>
+
+<div class="row" style="margin-top: 7%; margin-bottom: 1%; margin-left: 75%; width: 400px;">
+  <div >
+    <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="Chercher Matricule " (change)="search($event)">
+   
+  </div>
+    <button  class="btn btn-submit btn-primary" > <i class="fa fa-search"></i></button>
+</div>
+
+<button style="margin-top: -6%; margin-bottom: 1%; margin-left: 7%; background-color: darkcyan; border-color: darkcyan;" class="btn btn-success btn-primary" routerLink="/backend/dashboard/signup">Ajouter utilisateur</button>
+
+
+
+<table class="table table-striped" style="text-align: center;" style="margin-left: 4%;">
+  <thead>
+  <tr>
+    <th>Matricule</th>
+    <th>Nom</th>
+    <th>Prenom</th>
+    <th>Email</th>
+    <th>Section</th>
+    <th>Role</th>
+    <th>Password</th>
+    <th></th>
+   
+
+  </tr>
+  </thead>
+  <tbody  >
+  <tr [style.background-color]="color" *ngFor="let user of users" >
+    <td  >{{ user.Matricule }}</td>
+    <td>{{ user.Nom }}</td>
+    <td> {{user.Prenom}}</td>
+    <td><input style="border :darkslategray; background-color: rgb(196, 218, 219); width: 100%;" type="email" required="" value="{{this.user.Email}}" (change)="ChangeEmail($event)" ></td>
+    <td>  <mat-select #select (selectionChange)="ChangeSection($event)" >
+      <mat-option  *ngFor="let section of sections" [value]="section.Intitule">
+        {{section.Intitule }}
+      </mat-option>
+    </mat-select></td>
+    <td><mat-select #select (selectionChange)="ChangeRole($event)" >
+      <mat-option  *ngFor="let role of roles" [value]="role.role">
+        {{role.role }}
+      </mat-option>
+    </mat-select></td>
+    <td><input style="border :darkslategray; background-color: rgb(196, 218, 219);" type="password" placeholder="Nouveau Mot de passe" (change)="ChangePass($event)" ></td>
+    <td><button type="submit" class="btn btn-success btn-sm" (click)="updateUserRole(user)" style="margin-left: -12%;">Modifier</button>
+   <button type="submit" class="btn btn-danger btn-sm" (click)="deleteUser(user.Matricule)" style="margin-left: 4%;" >Supprimer</button></td>
+  </tr>
+  </tbody>
+</table>
+
+

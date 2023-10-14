@@ -1,0 +1,93 @@
+
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+  
+    <h5 class="my-0 mr-md-auto font-weight-normal brand"  ><a  routerLink="/">OPALIA PHARMA</a></h5> 
+  
+    <a class="btn btn-info" routerLink="/auth/login">Login</a>
+   <!-- <a class="btn btn-info" routerLink="/auth/signup">Login</a> -->
+  </div>
+  <p class="alert alert-success" *ngIf="Msg" style="margin-left: 20%; margin-right: 20%; margin-top: 1%;">
+    <strong>Success</strong>   <br> Votre mot de passe a été modifier avec succès!
+  
+  </p> 
+<div class="container"  style="background-image: url('assets/images/opaliagroupe.jpg') ; background-repeat: no-repeat; background-size: 1200px 600px; height: 600px;  " >
+	<div *ngIf="!Mdps" class="row justify-content-center" style="margin-left: 10%;">
+        
+        <div class="col-md-6"  >
+            <h1>Retrouvez votre compte</h1>  
+
+            <div class="form"  >
+                <form [formGroup]="Form" (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col-md-4">
+                                <label style="background-color: white;" ><strong>Matricule&nbsp;</strong><span class="error">*</span> </label>
+                            </div>
+                            <div class="col-md-9">
+                                <input formControlName="Matricule" class="form-control" placeholder="Matricule" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col-md-4">
+                                <label  style="background-color: white;"><strong>Email&nbsp;</strong><span class="error">*</span> </label>
+                            </div>
+                            <div class="col-md-9">
+                                <input formControlName="Email" type="email" class="form-control" placeholder="Email@gmail.com" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col-md-4">
+                            </div>
+                            <div class="col-md-9">
+                                <button type="submit" [disabled]="Form.invalid" class="btn btn-primary" style="margin-left: 47%;">Rechercher</button>
+                                <button type="submit" class="btn "  routerLink="/auth/login" style="margin-left: 3%; background-color: gainsboro; border-color: black;" >Annuler</button><br>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="Mdps" style="margin-left: 30%; margin-top: 5%;" class="form">
+        <div class="form"  >
+            <form [formGroup]="FormPass" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-4">
+                            <label style="background-color: white;" ><strong>Nouveau mot de passe&nbsp;</strong><span class="error">*</span> </label>
+                        </div>
+                        <div class="col-md-9">
+                            <input formControlName="NvPass" type="password" class="form-control" placeholder="Nouveau mot de passe" />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-4">
+                            <label  style="background-color: white;"><strong>Confirmer nouveau mot de passe&nbsp;</strong><span class="error">*</span> </label>
+                        </div>
+                        <div class="col-md-9">
+                            <input  formControlName="ConfNvPass" type="password" class="form-control" placeholder="Confirmer nouveau mot de passe" />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-4">
+                        </div>
+                        <div class="col-md-9">
+                            <button type="submit" [disabled]="FormPass.invalid" class="btn btn-primary" style="margin-left: 0%;" (click)="Rechercher()">Modifier</button>
+                            <button type="submit" class="btn "  routerLink="/auth/login" style="margin-left: 3%; background-color: gainsboro; border-color: black;" >Annuler</button><br>
+                            
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+       </div>
+</div>

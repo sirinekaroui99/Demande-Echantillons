@@ -1,0 +1,76 @@
+<style>
+    .sidenav-container {
+    height: 100%;
+  }
+  
+  .sidenav {
+    width: 200px;
+  }
+  
+  .sidenav .mat-toolbar {
+    background: inherit;
+  }
+  
+  .mat-toolbar.mat-primary {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+  
+</style>
+
+<div style="margin-top: 7%; margin-left: 15%; margin-right: 10%;" *ngIf="success">
+  <div class="alert alert-success alert-dismissible mb-2" role="alert">
+    <button type="button" class="close" (click)="clear()">
+        <span aria-hidden="true">×</span>
+    </button>
+    <ol >
+        <div>Success : Produit modifié avec succés!
+        </div>
+    </ol>
+</div>
+</div>
+
+
+
+<div class="row"  style="margin-left: 15%; margin-right: 15%; margin-top: 7%;" >
+    <h1  style="margin-left: 2%;" ><strong  >Liste des produits</strong></h1>
+    <div class="col-md-12 pad-10" style="margin-left:10%; margin-top: 1%;" >
+     <button type="submit" class="btn btn-success " (click)="goToAddProduit()" style="margin-left: 77%; ">
+       <span class="glyphicon glyphicon-floppy-disk"></span> Ajout Produit
+     </button>
+     
+         
+   </div>
+  
+<div class="row" style="margin-top: 1%; margin-bottom: 1%; margin-left: 2%; width: 500px;">
+  <div >
+    <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="Chercher code produit " (change)="search($event)">
+   
+  </div>
+    <button  class="btn btn-submit btn-primary" > <i class="fa fa-search"></i></button>
+</div> 
+ <table class="table table-striped">
+   <thead>
+     <tr >
+         <th>Code produit</th>
+         <th>Désignation</th>
+         <th>Forme</th>
+         <th>Action</th>
+     </tr>
+   </thead>
+   <tbody  >
+     <tr  *ngFor="let produit of Produits.reverse()" >
+         <td>{{produit.Code}}</td>
+         <td>{{produit.Designation}}</td>
+         <td>{{produit.Forme}}</td>
+        
+         <td>
+             <a  class="btn btn-sm btn-info mr-2"  (click)="goToUpdateProduit(produit.Code)"   >Editer</a>
+             <a href="javascript:void(0)" class="btn btn-sm btn-danger" (click)="deleteProduct(produit.Code)">Supprimer</a>
+         </td>
+     </tr>
+   </tbody>
+ </table></div>
+ <h3 style="text-align: center;" *ngIf="Vide">"Aucun resultat" </h3>
+ 

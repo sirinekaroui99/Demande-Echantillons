@@ -1,0 +1,95 @@
+
+  <fieldset style="margin-left: 5%; margin-right: 5%;">
+    <figure>    
+  </figure>
+  <header>
+    <h1 style="margin-left: -10%;">DEMANDE D'ECHANTILLON N°{{numero}}</h1>
+    <strong>
+    <label style="margin-left: 65%;" for="date" >Date : {{ date |  date:' dd / MM/ yyyy , h:mm a' }}  </label></strong>
+
+  </header><br>
+  <body>
+<form  >
+  
+    <p>
+        
+      <strong>
+      <label for="name" style="margin-left: 2%">Nom & Prénom :</label></strong>
+      <input type="text" name="name" id="name" style="border: none;" required value="{{ Nom }}  {{ Prenom }}" readonly >
+      <strong>
+      <label for="matricule" style="margin-left: 6% ; " >Matricule :</label></strong>
+      <input type="number" name="matricule" id="matricule" style="border: none;"  required value="{{ Matricule }}" readonly>
+   
+    </p> 
+    <strong><br>
+    <label for="section" style="margin-left: 2%" >Section analytique : </label></strong>
+    <input type="text" name="section" id="section" style="border: none; width: 23%;" required value="{{ Section }}" readonly >
+    <strong>
+        <label for="Pièce_jointe"  >Certificat :</label></strong> 
+ <span  *ngIf="!image" style="margin-left: 2%;">Aucun certificat existe</span>
+       <button *ngIf="this.image" (click)="AfficherImage()" class="btn btn-success btn-sm" style="background-color: rgb(188, 206, 207); color: black; border-color: rgb(188, 206, 207) ; margin-left: 2%;">Afficher certificat </button><br><br>
+     
+     
+
+    <div class="conteneur">
+        <table class="table table-striped">
+            <thead style="margin-bottom: 2%;">
+            <tr>
+              <th><strong><label for="nom_pdt">Nom du produit </label></strong><br><br></th>
+              <th><strong><label for="Quantité">Quantité</label></strong><br><br></th>
+              <th></th>
+              
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let commande of commandes let i = index" >
+              <td><input style="width: 80%;" type="text" name="name" id="name"  required  value="{{this.commande.Produit}}" (change)="ChangeProduit($event,this.commande.Produit,this.commande.Num_cmd,i)" ></td> 
+              <td><input style="margin-right: 10%;" type="number" min="1" max="2" name="nbr_pdt" value="0" required="required" value="{{this.commande.Quantite}}" (change)="ChangeQuantite($event,this.commande.Quantite,this.commande.Produit,this.commande.Num_cmd,i)" ><br><br></td>
+              <td><button class="btn btn-save btn-danger" (click)="deleteCommande(this.commande)" >Supprimer</button></td>
+              
+            </tr>
+            <tr> <td></td>
+             <td></td>
+              <td><div class="button" style="margin-top: 7%;">
+                <button 
+                (click)=" sendValidMail() ; updateCommande() ;openDialog();"
+                        type="submit" class="btn btn-save btn-primary" >
+                  <span ></span> Valider
+                </button>
+                <button   class="btn btn-save btn-danger" (click)="sendRefusMail(); updateCommande(); " >Refuser</button> 
+              </div>
+              
+            </td>
+            </tr>
+            </tbody>
+          </table>
+          <strong>Commentaire</strong>
+      <p *ngIf="cmntr">  {{commentaire}}</p>
+
+       <p *ngIf="!cmntr"> Vide</p>
+     
+       <img [attr.src]="'assets/images/signature.jpeg'"  alt="Signature"  height="70" style="margin-top: 3%; margin-left: 3%;" *ngIf="Valid" >  
+      </div>
+     
+     
+    
+    
+    </form> 
+    <button style="margin-top: 2%; margin-left: 2%;  background-color: rgb(248, 100, 46); border-color:  rgb(248, 100, 46);" class="btn btn-save btn"  (click)="verif()">Vérifier</button>
+    <span *ngIf="nbr0" ><strong>Le nombre de demandes en ce mois = {{var0}}</strong> </span>
+    <span *ngIf="nbr1" ><strong> Le nombre de demandes en ce mois = {{var1}}</strong></span>
+    <span *ngIf="nbr2" ><strong>Le nombre de demandes en ce mois = {{var2}}</strong> </span>
+    <span *ngIf="nbr3" ><strong>Le nombre de demandes en ce mois = {{var3}}</strong> </span>
+    <span *ngIf="nbr4" > <strong> Le nombre de demandes en ce mois = {{var4}}</strong></span>
+    <span *ngIf="nbr5" ><strong>Le nombre de demandes en ce mois = {{var5}}</strong> </span>
+    <span *ngIf="nbr6" ><strong>Le nombre de demandes en ce mois = {{var6}}</strong> </span>
+    <span *ngIf="nbr7" ><strong> Le nombre de demandes en ce mois = {{var7}}</strong></span>
+    <span *ngIf="nbr8" ><strong>Le nombre de demandes en ce mois = {{var8}}</strong> </span>
+    <span *ngIf="nbr9" ><strong> Le nombre de demandes en ce mois = {{var9}}</strong></span>
+    <span *ngIf="nbr10" ><strong>nombre de demandes en ce mois = {{var10}}</strong> </span>
+    <span *ngIf="nbr11" ><strong>Le nombre de demandes en ce mois = {{var11}}</strong> </span>
+    <span *ngIf="nbr12" ><strong>Le nombre de demandes en ce mois = {{var12}}</strong> </span>
+
+  </body> 
+  </fieldset>
+

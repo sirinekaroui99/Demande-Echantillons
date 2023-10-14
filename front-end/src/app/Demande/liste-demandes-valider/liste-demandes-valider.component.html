@@ -1,0 +1,28 @@
+
+
+
+
+
+<table class="table table-striped" style="text-align: center;">
+    <thead>
+    <tr>
+      <th>Num_demande</th>
+      <th>Date_demande</th>
+      <th>User</th>
+      <th>Status</th>
+      
+    </tr>
+    </thead>
+    <tbody  >
+    <tr [style.background-color]="color" *ngFor="let commande of commandes.reverse()" (click)="goToAfficherCmd(commande.Num_cmd); " style="cursor: pointer;" >
+      <td  ><strong>{{ commande.Num_cmd }}</strong> </td>
+      <td>{{ commande.Date_cmd |  date:' dd / MM/ yyyy , h:mm a'}}</td>
+      <td> {{commande.User}}</td>
+      <td>{{ commande.status }}</td>
+    </tr>
+    </tbody>
+  </table>
+
+
+
+

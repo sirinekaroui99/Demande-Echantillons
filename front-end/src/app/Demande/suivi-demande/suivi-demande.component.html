@@ -1,0 +1,73 @@
+
+<p class="alert alert-success" *ngIf="Msg" style="margin-left: 25%; margin-right: 20%; margin-top: 8%;">
+  <strong>Success</strong>   <br> Votre demande a été créer avec succés!
+
+</p> 
+<div class="row" style="margin-top: 6%; margin-bottom: 1%; margin-left: 6%; width: 100%;">
+  <div >
+    <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="Chercher Num_demande " (change)="search($event)">
+   
+  </div>
+    <button  class="btn btn-submit btn-primary" > <i class="fa fa-search"></i></button>
+</div>
+
+
+<table class="table table-striped" style="text-align: center; margin-left: 3%;">
+  <thead>
+  <tr>
+    <th>Num_demande</th>
+    <th>Date_demande</th>
+    <th>User</th>
+    <th>Status</th>
+    <th>Certificat</th>
+    <th>Commentaire</th>
+    <th></th>
+    
+   
+  </tr>
+  </thead>
+  <tbody  >
+  <tr [style.background-color]="color" *ngFor="let commande of commandes.reverse()"   id='this.commande.Num_cmd'>
+    <td  ><strong>{{ commande.Num_cmd }}</strong> </td>
+    <td>{{ commande.Date_cmd |  date:' dd / MM/ yyyy , h:mm a'}}</td>
+    <td> {{commande.User}}</td>
+    <td>{{ commande.status }}</td>
+    
+    <td><button (click)="AfficherImage(commande.certificat)" class="btn btn-success btn-sm" style="background-color: rgb(188, 206, 207); color: black; border-color: rgb(188, 206, 207) ; margin-left: 2%;">Afficher certificat </button></td>
+    <td  *ngIf="commande.commentaire" >{{commande.commentaire}}</td>
+    <td  *ngIf="!commande.commentaire" > Vide</td>
+    <td><button style="margin-left: -15%;"  mat-raised-button color="primary" (click)=" click(this.commande.Num_cmd ,commande)" >Detail</button><button style="margin-left: 3%;" class="btn btn-save btn-success" [disabled]="commande.status!='Validée'" (click)="goToAfficherCmd(commande.Num_cmd); "  >Imprimer demande</button></td>
+   
+  
+  </tr>
+  
+  </tbody>
+</table>
+
+
+
+<div class="shadowbox" *ngIf="cmd" style="width: 30%;">
+  <button type="button" class="close" (click)="clear()">
+    <span aria-hidden="true">×</span>
+</button>
+  <table class="table table-striped" *ngIf="cmd">
+    <thead>
+    <tr>
+      <th>Produit</th>
+      <th>Quantite</th>
+      
+      
+      
+    </tr>
+    </thead>
+    <tbody  >
+    <tr [style.background-color]="color" *ngFor="let commande of cmdd"  (click)="click(this.commande.Num_cmd)">
+     
+      <td  >{{ commande.Produit }}</td>
+      <td>{{ commande.Quantite }}</td>
+      
+      
+    </tr></tbody>
+  </table>
+</div>
+<h3 style="text-align: center;" *ngIf="Vide">"Aucun resultat" </h3>

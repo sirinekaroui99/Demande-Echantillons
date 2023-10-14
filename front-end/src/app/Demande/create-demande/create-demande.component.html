@@ -1,0 +1,118 @@
+
+  <fieldset >
+    <figure>    
+  </figure>
+  <header>
+    <h1 >DEMANDE D'ECHANTILLON N°{{numero}} </h1> 
+   
+    <strong>
+    <label style="margin-left: 65%;" for="date"  >Date : {{date |  date:' dd / MM/ yyyy'}}{{ Time | date :' h:mm a' }} </label></strong>
+     
+  </header><br>
+  <body style="background-image: url('assets/images/backgroundimgg.jpg') ; background-repeat: no-repeat; background-size: 1150px 600px; height: 600px; margin-top: 1%; margin-left: 6%;"  >
+    <form  #ajoutcommandeForm="ngForm" >
+    <p>
+      
+      <strong>
+      <label for="name" style="margin-left: 2%">Nom & Prénom :</label></strong>
+      <input type="text" name="name" id="name" style="background-color:  rgb(248, 252, 255); margin-top: 2%;" [value]="NomPrenom" required  [(ngModel)]="variable" readonly >
+
+      <strong>
+       
+        
+        
+      <label for="matricule"  style="margin-left: 2% ; " >Matricule :</label></strong>
+      <input type="number" name="matricule" id="matricule"  [value]="mat"  [(ngModel)]="this.fils1.commande1.User"  [(ngModel)]="this.fils2.commande2.User"  [(ngModel)]="this.fils3.commande3.User"  [(ngModel)]="this.fils4.commande4.User"  [(ngModel)]="this.fils5.commande5.User"  style="background-color:  aliceblue; margin-top: 2%;"  required  readonly>
+   
+    </p> 
+    <strong><br>
+    <label for="section" style="margin-left: 2%" >Section analytique : </label></strong>
+    
+            
+ <mat-form-field appearance="fill" >
+    <div style ='margin-top: -10%; margin-bottom: -12%; margin-left: 2%;'>
+  <mat-select >
+    <mat-option *ngFor="let section of sections" [value]="section.Intitule"  >
+      {{section.Intitule }}
+    </mat-option>
+  </mat-select>
+</div>
+  </mat-form-field>
+        <br><br><br>
+ 
+        
+
+       
+
+    <div class="conteneur">
+      <div class="box1">
+        <strong>
+        <label for="nom_pdt">Nom du produit </label></strong><br><br>
+      </div>
+      <!--<div class="box3">
+        <strong>
+        <label for="Autorisation">Autorisation </label></strong> 
+      </div>
+      <div class="box4"><strong>
+        <label for="Pièce_jointe">Pièce jointe </label></strong><br><br>
+      </div> -->
+      
+      <div class="box5"><strong>
+        <label for="Quantité">Quantité</label></strong><br><br>
+      </div>
+  <div>
+      <div>     <app-produit1 (change)="verifProduit(this.fils1.commande1.Produit,this.fils2.commande2.Produit,this.fils3.commande3.Produit,this.fils4.commande4.Produit,this.fils5.commande5.Produit) ;"></app-produit1></div> 
+     
+      <div >    <app-produit2 (change)="verifProduit(this.fils1.commande1.Produit,this.fils2.commande2.Produit,this.fils3.commande3.Produit,this.fils4.commande4.Produit,this.fils5.commande5.Produit) ;" ></app-produit2> </div> 
+      <div>     <app-produit3 (change)="verifProduit(this.fils1.commande1.Produit,this.fils2.commande2.Produit,this.fils3.commande3.Produit,this.fils4.commande4.Produit,this.fils5.commande5.Produit) ;" ></app-produit3> </div> 
+      <div>     <app-produit4 (change)="verifProduit(this.fils1.commande1.Produit,this.fils2.commande2.Produit,this.fils3.commande3.Produit,this.fils4.commande4.Produit,this.fils5.commande5.Produit) ;" ></app-produit4> </div>
+      <div>     <app-produit5 (change)="verifProduit(this.fils1.commande1.Produit,this.fils2.commande2.Produit,this.fils3.commande3.Produit,this.fils4.commande4.Produit,this.fils5.commande5.Produit) ;" ></app-produit5> </div>
+      
+    </div>  
+    <div>
+      <label  style=" margin-left: 60%; position: absolute; margin-top: -30%;" for="Commentaire"><strong> Commentaire:</strong></label>
+
+      <textarea id="Commentaire" name="Commentaire"  rows="5" cols="33" style="margin-left: 60%; position: absolute; margin-top: -25%; background-color: aliceblue;" placeholder="  ...." (change)="Insertcommentaire($event)"  >
+      
+      </textarea>
+</div>
+
+</div>
+
+      <table class="table table-striped" style="background-color: aliceblue;">
+        <thead>
+          <tr>
+            <th>
+      <strong>
+        <label for="Pièce_jointe" style="margin-left: 2% ;  " >Certificat :</label></strong>
+      </th>
+      <th>
+      <div style="  position: absolute;
+      top: 121.5%;
+      left: 27%;">
+      
+        <input type="file" name="image" id="Pièce_jointe" accept=".png,.jpeg,.jpg" (change)="selectImage($event)" ><br><br>
+        
+      </div>
+    </th>
+    </tr>
+    </thead>
+      </table>
+    
+      
+     <!--  <app-suivi-cmd ><p #paragraphe>un paragraphe à passer à app-suivi-cmd</p></app-suivi-cmd>--> 
+      <div class="button">
+        <button 
+             
+                
+        (click)=" onSubmit()  ; createCommande(this.fils1.commande1) ; createCommande(this.fils2.commande2); createCommande(this.fils3.commande3); createCommande(this.fils4.commande4); createCommande(this.fils5.commande5) ; 
+        verifProduit(this.fils1.commande1.Produit,this.fils2.commande2.Produit,this.fils3.commande3.Produit,this.fils4.commande4.Produit,this.fils5.commande5.Produit) ;"  
+                 
+                type="submit" class="btn btn-save btn-primary" >
+          <span class="glyphicon glyphicon-floppy-disk"  ></span> Valider
+        </button><button class="btn btn-save btn-danger" (click)="goTodashboard() ">Annuler</button> 
+      </div> 
+        
+    </form>
+  </body>
+  </fieldset>

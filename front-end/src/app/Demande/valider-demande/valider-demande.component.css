@@ -1,0 +1,64 @@
+
+    header{
+        text-align: center;
+          }
+          input {
+            margin-left: 1%;
+            margin-right: 10%;
+           
+            
+          }
+          .conteneur{
+            position: relative;
+            width: 95%;
+            height: 100%;
+            margin: auto;
+          }
+          fieldset{
+           margin-top: 5%;
+            padding-bottom: 5%;
+          }
+         .box1{
+           position: relative;
+           margin-top: 0%;
+           left: 20px;
+           
+         }
+         .box2{
+           position:absolute;
+           top: 0px;
+           left: 30%;
+         }
+         .box3{
+           position:absolute;
+           top: 0px;
+           left: 30%;
+         }
+         .box4{
+           position:absolute;
+           top: 0px;
+           left: 55%;
+         }
+         .box5{
+           position:absolute;
+           top: 0px;
+           left: 30%;
+         }
+         .button{
+          position:absolute;
+           top: 82%;
+           left: 65%;
+           
+         }
+         button{
+           margin-right: 20px;
+           padding: 10px 30px 10px 30px;
+           border-radius: 5px;
+         }
+         .mat-form-field {
+         margin-left: 3%;
+        }
+        .mat-label {
+         margin-left: 50%;
+         padding-top: 50%;
+        }

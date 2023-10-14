@@ -1,0 +1,28 @@
+
+<div class="row" style="margin-top: 7%; margin-bottom: 1%; margin-left: 7%; width: 500px;">
+  <div >
+    <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="Chercher Num_demande " (change)="search($event)">
+   
+  </div>
+    <button  class="btn btn-submit btn-primary" > <i class="fa fa-search"></i></button>
+</div>
+
+<table class="table table-striped" style="text-align: center;">
+  <thead>
+  <tr>
+    <th>Num_demande</th>
+    <th>Date_demande</th>
+    <th>User</th>
+    <th>Status</th>
+    
+  </tr>
+  </thead>
+  <tbody  >
+  <tr [style.background-color]="color" *ngFor="let commande of commandes.reverse()" (click)="goToValiderCmd(commande.Num_cmd); " style="cursor: pointer;" >
+    <td  ><strong>{{ commande.Num_cmd }}</strong> </td>
+    <td>{{ commande.Date_cmd |  date:' dd / MM/ yyyy , h:mm a'}}</td>
+    <td> {{commande.User}}</td>
+    <td>{{ commande.status }}</td>
+  </tr>
+  </tbody>
+</table>

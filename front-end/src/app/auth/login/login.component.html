@@ -1,0 +1,44 @@
+
+<div class="container"  style="background-image: url('assets/images/opalia-pharma-0.918005001602587316.png') ; background-repeat: no-repeat; background-size: 1200px 600px; height: 560px; width: 100% ;" >
+	<app-msg></app-msg>
+    <div class="row justify-content-center" style="margin-left: 3%;">
+        <div class="col-md-6"  >
+            
+            <hr />
+            <div class="login-form" style="margin-top: 15%; background-color: rgba(255, 255, 255, .4);" >
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" style="margin-left: 13%; margin-right: -12%;">
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col-md-4">
+                                <label style="color: white;font-size: larger; margin-top: 10%;" ><strong>Email&nbsp;</strong><span class="error">*</span> </label>
+                            </div>
+                            <div class="col-md-9">
+                                <input formControlName="username" class="form-control" placeholder="Email@gmail.com" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col-md-4">
+                                <label  style="color: white; font-size: larger;"><strong>Password&nbsp;</strong><span class="error">*</span> </label>
+                            </div>
+                            <div class="col-md-9">
+                                <input formControlName="password" type="password" class="form-control" placeholder="Mot de passe" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col-md-4">
+                            </div>
+                            <div class="col-md-9" style="margin-bottom: 4%;">
+                                <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary" >Connexion</button>
+                                <a style="color: blue; margin-left: 2%; " routerLink="findUser" >Mot de passe oublier ? </a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

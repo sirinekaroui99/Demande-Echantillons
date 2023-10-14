@@ -1,0 +1,41 @@
+
+<div id="print-section">
+    <div style="margin-left: 7%;">
+        <img src="http://localhost:3000/images/signature.jpeg" alt="Logo Opalia" style="margin-left: 2%; margin-top: 6%; "  height="80" >
+        <h2 style="text-align: center; margin-top: 3%;">DEMANDE D'ECHANTILLON N°{{Numcmd}}</h2>
+        <strong>
+        
+         <label style="margin-left: 80%;" for="date"  >Date : {{date |  date:' dd / MM/ yyyy'}}{{ Time | date :' h:mm a' }} </label></strong>
+     <div>
+        <h3><strong> <label for="matricule"  style="margin-left: 2% ;" >Matricule : &nbsp;{{Matricule}}</label></strong></h3> 
+       <h3><strong>
+             <label for="name" style="margin-left: 2%;"> Nom : &nbsp;{{Nom}}&nbsp;{{Prenom}} </label></strong>
+             </h3> 
+             <h3><strong> <label for="section"  style="margin-left: 2% ;" >Section analytique : &nbsp;{{Section}}</label></strong></h3> 
+       </div>
+      <table style="text-align: center; margin-left: 20%; margin-top: 4%; border-collapse: collapse ; border: 2px solid black;">
+    <tr>
+        <th style="border: 2px solid black;">Produit&nbsp; &nbsp;&nbsp; &nbsp;</th>&nbsp; &nbsp;
+        <th style="border: 2px solid black;">Quantite&nbsp; &nbsp;&nbsp; &nbsp;</th>
+    </tr>
+    <tr *ngFor="let commande of commandes">
+        <td style="border: 2px solid black;"> {{ commande.Produit }}&nbsp; &nbsp;</td>&nbsp; &nbsp;
+        <td style="border: 2px solid black;">{{ commande.Quantite }}&nbsp; &nbsp;</td>
+    </tr>
+</table>
+<h3><div style="margin-left: 2%; margin-top: 5%;" *ngIf="cmntr"><strong>Commentaire</strong> </div></h3>
+<div  style="margin-left: 5%;">{{commentaire }}</div>
+ 
+      </div>
+
+
+
+     
+<h3 style="margin-top: 5%; margin-left: 72%;">Signature</h3>
+
+      <img src="http://localhost:3000/images/signature.jpeg"  alt="Signature"  height="70" style="margin-top: 0%; margin-left: 70%;"  > 
+
+</div>
+<button (click)="print()" style="margin-left: 8%; margin-top: 5%; margin-bottom: 2%; " class="btn btn-save btn-primary"  >Imprimer</button>
+
+<button (click)="printCertificat()" style="margin-left: 3%; margin-top: 5%; margin-bottom: 2%; " class="btn btn-save btn-primary" >Imprimer certificat</button>
